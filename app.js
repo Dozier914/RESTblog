@@ -11,6 +11,7 @@ mongoose.connect("mongodb://localhost/restful_blog_app");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 //HOSTNAME 
 const port = 3000;
@@ -22,7 +23,6 @@ var blogSchema = new mongoose.Schema({
     image: String,
     body: String,
     created: {type: Date, default: Date.now}
-
 });
 var Blog = mongoose.model("Blog", blogSchema);
 
@@ -83,7 +83,15 @@ app.get("/blogs/:id/edit", function(req, res){
 
 // UPDATE ROUTE 
 app.put("/blogs/:id", function(req, res){
-    res.send("UPDATE ROUTE!");
+    Blog.findOneAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+        if(err){
+            console.log("error");
+            res.redirect("/blogs/");
+        } else {
+            console.log("success");
+            res.redirect("/blogs/5ea7a06a642c117b4c96dcb5"); 
+        }
+    });
 });
 
 app.listen(port, hostname, function() {
