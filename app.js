@@ -1,5 +1,6 @@
 
 var bodyParser  = require("body-parser"),
+methodOverride  = require("method-override"),
 mongoose        = require("mongoose"),
 express         = require("express"),
 http            = require("http"),
@@ -78,6 +79,11 @@ app.get("/blogs/:id/edit", function(req, res){
             res.render("edit", {blog: foundBlog});
         }
     });
+});
+
+// UPDATE ROUTE 
+app.put("/blogs/:id", function(req, res){
+    res.send("UPDATE ROUTE!");
 });
 
 app.listen(port, hostname, function() {
