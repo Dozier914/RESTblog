@@ -2,12 +2,45 @@ i.icon {
     font-size: 2em;
 }
 
-div.container.main, p.footer
+div#notHome {
+    position: relative;
+    top: 5em;
+}
+
+div.container.main
 {
     position: relative;
-    top: 7em;
+    top: 1em;
+}
+
+p.footer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.0rem;            /* Footer height */
+}
+
+.ui.items>.item a {
+    margin-top: 1.0em;
+}
+
+.ui.button {
+    margin-top: 1.0em;
+}
+
+#date {
+    font-size: small;
+}
+
+div.content {
+    margin-bottom: 1.0em;
 }
 
 img {
     width: 50%;
+}
+
+#delete {
+    display: inline;
 }
